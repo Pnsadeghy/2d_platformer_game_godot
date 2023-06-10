@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://8l3h8cn8cl4q"]
+
+[ext_resource type="Texture2D" uid="uid://dvjs351hg18nv" path="res://icon.svg" id="1_i8kxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i1ue"]
+size = Vector2(127, 127)
+
+[node name="level_0001" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Block" type="StaticBody2D" parent="."]
+position = Vector2(1, 211)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Block"]
+texture = ExtResource("1_i8kxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_3i1ue")
+
+[node name="Block2" type="StaticBody2D" parent="."]
+position = Vector2(-288, 110)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Block2"]
+texture = ExtResource("1_i8kxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_3i1ue")
+
+[node name="Block3" type="StaticBody2D" parent="."]
+position = Vector2(317, 45)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Block3"]
+texture = ExtResource("1_i8kxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_3i1ue")
