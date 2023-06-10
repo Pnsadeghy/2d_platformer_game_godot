@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://de1f1ywapry4y"]
+[gd_scene load_steps=5 format=3 uid="uid://de1f1ywapry4y"]
 
 [ext_resource type="Texture2D" uid="uid://dvjs351hg18nv" path="res://icon.svg" id="1_450kf"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_fgh8r"]
-[ext_resource type="PackedScene" uid="uid://c888sgiud2uhg" path="res://modules/state_manager/state_manager.tscn" id="3_32fxy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ukdc"]
 animations = [{
@@ -54,7 +53,3 @@ animation = &"move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yextm")
-
-[node name="Modules" type="Node2D" parent="."]
-
-[node name="StateManager" parent="." instance=ExtResource("3_32fxy")]
