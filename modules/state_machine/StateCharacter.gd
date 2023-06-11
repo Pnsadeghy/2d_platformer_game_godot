@@ -7,11 +7,11 @@ class_name StateCharacter
 @export var jump_force := 300.0
 @export var fall_gravity_scale := 980.0
 @export var jump_gravity_scale := 600.0
-@export var wall_gravity_scale := 100.0
+@export var wall_gravity_scale := 50.0
 
 # variables
 var state_machine: StateMachine
-var movement_x := 0.0
+var horizontal_movement := 0.0
 var facing_right := true
 
 var jump_requested := false
@@ -66,12 +66,12 @@ func _physics_process(delta):
 
 func play_animation(name: String):
 	animator.play(name)
-
-func set_movement_x():
-	velocity.x = movement_x * move_speed
 	
 func is_facing_wall():
 	return wall_checker.is_colliding()
+	
+func wall_distance():
+	return global_position.distance_to(wall_checker.get_collision_point())
 
 func check_flip():
 	if velocity.x == 0: return
@@ -86,3 +86,6 @@ func check_flip():
 
 func on_jump():
 	jump_requested = false
+	
+func set_vertical_movement():
+	velocity.x = horizontal_movement * move_speed

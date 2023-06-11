@@ -11,7 +11,7 @@ func _init(state_machine, entity):
 	timer = Timer.new()
 	timer.name = "WallJumpTimer"
 	timer.one_shot = true
-	timer.wait_time = 0.75
+	timer.wait_time = 0.4
 	entity.add_child(timer)
 	timer.timeout.connect(on_timeout)
 
@@ -28,8 +28,9 @@ func on_process(delta):
 	if !super.on_process(delta): return false
 	
 	if can_change_state:
-		entity.air_state.gravity_force = 1.1
+		entity.air_state.gravity_force = 2
 		state_machine.change_state(entity.air_state)
+		return false
 	
 	return true
 

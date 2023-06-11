@@ -18,7 +18,7 @@ func on_process(delta):
 	return true
 	
 func on_physics_process(delta):
-	return true
+	pass
 
 func on_animation_finished():
 	pass

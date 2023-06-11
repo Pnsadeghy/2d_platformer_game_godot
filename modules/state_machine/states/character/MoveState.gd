@@ -9,10 +9,13 @@ func _init(state_machine, entity):
 func on_process(delta):
 	if !super.on_process(delta): return false
 	
-	if entity.movement_x == 0:
+	if entity.horizontal_movement == 0:
 		state_machine.change_state(entity.idle_state)
 		return false
-		
-	entity.set_movement_x()
 	
 	return true
+
+func on_physics_process(delta):
+	super.on_physics_process(delta)
+	
+	entity.set_vertical_movement()

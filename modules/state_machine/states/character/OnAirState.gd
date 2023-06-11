@@ -8,9 +8,14 @@ func on_process(delta):
 	if entity.is_facing_wall():
 		state_machine.change_state(entity.on_wall_state)
 		return false
-	if entity.movement_x != 0:
-		entity.set_movement_x()
-	else:
-		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.01)
 
 	return true
+	
+func on_physics_process(delta):
+	super.on_physics_process(delta)
+	
+	if entity.horizontal_movement != 0:
+		entity.set_vertical_movement()
+	else:
+		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.05)
+
