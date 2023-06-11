@@ -1,69 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://8l3h8cn8cl4q"]
+[gd_scene load_steps=2 format=3 uid="uid://8l3h8cn8cl4q"]
 
-[ext_resource type="Texture2D" uid="uid://dvjs351hg18nv" path="res://icon.svg" id="1_i8kxp"]
 [ext_resource type="PackedScene" uid="uid://de1f1ywapry4y" path="res://entities/player/player.tscn" id="2_838ce"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i1ue"]
-size = Vector2(127, 127)
 
 [node name="level_0001" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-
-[node name="Block" type="StaticBody2D" parent="."]
-position = Vector2(1, 211)
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Block"]
-texture = ExtResource("1_i8kxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_3i1ue")
-
-[node name="Block2" type="StaticBody2D" parent="."]
-position = Vector2(-288, 110)
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Block2"]
-texture = ExtResource("1_i8kxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_3i1ue")
-
-[node name="Block4" type="StaticBody2D" parent="."]
-position = Vector2(-159, 239)
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Block4"]
-texture = ExtResource("1_i8kxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_3i1ue")
-
-[node name="Block5" type="StaticBody2D" parent="."]
-position = Vector2(-291, -17)
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Block5"]
-texture = ExtResource("1_i8kxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_3i1ue")
-
-[node name="Block3" type="StaticBody2D" parent="."]
-position = Vector2(317, 45)
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Block3"]
-texture = ExtResource("1_i8kxp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_3i1ue")
 
 [node name="Player" parent="." instance=ExtResource("2_838ce")]
