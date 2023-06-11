@@ -9,6 +9,7 @@ size = Vector2(127, 127)
 [node name="level_0001" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="Block" type="StaticBody2D" parent="."]
 position = Vector2(1, 211)
@@ -29,6 +30,28 @@ collision_mask = 0
 texture = ExtResource("1_i8kxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_3i1ue")
+
+[node name="Block4" type="StaticBody2D" parent="."]
+position = Vector2(-159, 239)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Block4"]
+texture = ExtResource("1_i8kxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_3i1ue")
+
+[node name="Block5" type="StaticBody2D" parent="."]
+position = Vector2(-291, -17)
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Block5"]
+texture = ExtResource("1_i8kxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_3i1ue")
 
