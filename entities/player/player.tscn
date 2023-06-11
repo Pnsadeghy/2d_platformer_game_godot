@@ -24,7 +24,7 @@ target_position = Vector2(15, 0)
 texture_filter = 1
 sprite_frames = ExtResource("2_b3lww")
 animation = &"idle"
-frame_progress = 0.190684
+frame_progress = 0.767695
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
