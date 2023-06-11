@@ -2,6 +2,10 @@ extends GroundState
 
 class_name IdleState
 
+func _init(state_machine, entity):
+	super._init(state_machine, entity)
+	animation_name = "idle"
+
 func on_enter():
 	entity.velocity = Vector2.ZERO
 	

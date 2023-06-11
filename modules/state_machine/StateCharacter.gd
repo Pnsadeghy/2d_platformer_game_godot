@@ -49,11 +49,10 @@ func _init():
 	hit_state = HitState.new(state_machine, self)
 	on_wall_state = OnWallState.new(state_machine, self)
 	wall_jump_state = WallJumpState.new(state_machine, self)
-
-	state_machine.change_state(idle_state)
 	
 func _ready():
 	animator.animation_finished.connect(state_machine.on_animation_finished)
+	state_machine.change_state(idle_state)
 
 func _process(delta):
 	state_machine.on_process(delta)

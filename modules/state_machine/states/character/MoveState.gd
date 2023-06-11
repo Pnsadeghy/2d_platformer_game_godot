@@ -2,6 +2,10 @@ extends GroundState
 
 class_name MoveState
 
+func _init(state_machine, entity):
+	super._init(state_machine, entity)
+	animation_name = "move"
+
 func on_process(delta):
 	if !super.on_process(delta): return false
 	

@@ -17,6 +17,12 @@ func on_process(delta):
 			entity.velocity.y += entity.fall_gravity_scale * gravity_force * delta
 		else:
 			entity.velocity.y += entity.jump_gravity_scale * delta
+			
+	if animation_name == '':
+		if entity.velocity.y > 0:
+			entity.play_animation("fall")
+		else:
+			entity.play_animation("jump")
 
 	return true
 	

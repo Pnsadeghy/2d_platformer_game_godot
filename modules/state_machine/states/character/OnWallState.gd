@@ -2,6 +2,10 @@ extends AirState
 
 class_name OnWallState
 
+func _init(state_machine, entity):
+	super._init(state_machine, entity)
+	animation_name = "on_wall"
+
 func on_process(delta):
 	if !super.on_process(delta): return
 	

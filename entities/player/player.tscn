@@ -1,46 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://de1f1ywapry4y"]
+[gd_scene load_steps=4 format=3 uid="uid://de1f1ywapry4y"]
 
-[ext_resource type="Texture2D" uid="uid://dvjs351hg18nv" path="res://icon.svg" id="1_450kf"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_fgh8r"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1ukdc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_450kf")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_450kf")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_450kf")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_450kf")
-}],
-"loop": true,
-"name": &"move",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://dv8f2ap07isph" path="res://entities/player/player_animation.tres" id="2_b3lww"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yextm"]
-radius = 15.0
-height = 32.0
+radius = 9.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -52,14 +17,17 @@ jump_gravity_scale = null
 wall_gravity_scale = null
 
 [node name="WallChecker" type="RayCast2D" parent="."]
-target_position = Vector2(23, 0)
+position = Vector2(0, 4)
+target_position = Vector2(15, 0)
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_1ukdc")
-animation = &"move"
+texture_filter = 1
+sprite_frames = ExtResource("2_b3lww")
+animation = &"idle"
+frame_progress = 0.190684
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_yextm")
 
 [node name="JumpTimer" type="Timer" parent="."]
