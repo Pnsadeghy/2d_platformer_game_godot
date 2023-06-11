@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=42 format=3 uid="uid://dv8f2ap07isph"]
+[gd_resource type="SpriteFrames" load_steps=42 format=3 uid="uid://dg6trrqv2l2wg"]
 
 [ext_resource type="Texture2D" uid="uid://qphkc4v4idm0" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Fall (32x32).png" id="1_wnefa"]
 [ext_resource type="Texture2D" uid="uid://qq1g3h70ona0" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Hit (32x32).png" id="2_85bek"]

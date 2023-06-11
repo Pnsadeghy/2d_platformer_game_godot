@@ -19,10 +19,9 @@ func on_process(delta):
 		state_machine.change_state(entity.wall_jump_state)
 		return false
 		
-	if !animation_set and entity.velocity.y > 0:
-		if entity.wall_distance() <= 10:
-			animation_set = true
-			entity.play_animation("on_wall")
+	if !animation_set and entity.wall_distance() <= 10:
+		animation_set = true
+		entity.play_animation("on_wall")
 
 func on_physics_process(delta):
 	super.on_physics_process(delta)
