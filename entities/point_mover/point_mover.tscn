@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct1odf01xsxfw"]
+
+[ext_resource type="Script" path="res://entities/point_mover/point_mover.gd" id="1_qc5iq"]
+
+[node name="PointMover" type="Node2D"]
+script = ExtResource("1_qc5iq")
+
+[node name="PointDelay" type="Timer" parent="."]
+one_shot = true

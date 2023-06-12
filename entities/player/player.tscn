@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://de1f1ywapry4y"]
+[gd_scene load_steps=5 format=3 uid="uid://de1f1ywapry4y"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_fgh8r"]
 [ext_resource type="SpriteFrames" uid="uid://dg6trrqv2l2wg" path="res://entities/player/player_animation.tres" id="2_b3lww"]
@@ -6,6 +6,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yextm"]
 radius = 9.0
 height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tofjk"]
+radius = 8.0
+height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -18,11 +22,10 @@ target_position = Vector2(15, 0)
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_b3lww")
-animation = &"air_jump"
-frame = 5
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_yextm")
 
@@ -30,4 +33,14 @@ shape = SubResource("CapsuleShape2D_yextm")
 wait_time = 0.2
 one_shot = true
 
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_tofjk")
+debug_color = Color(0, 0.67451, 0, 0.419608)
+
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="area_entered" from="HitArea" to="." method="on_hit"]

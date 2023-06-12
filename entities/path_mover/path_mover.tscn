@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ybi11upfwy5"]
+
+[ext_resource type="Script" path="res://entities/path_mover/path_mover.gd" id="1_h2r3f"]
+
+[sub_resource type="Curve2D" id="Curve2D_j0sy4"]
+
+[node name="PathMover" type="Path2D"]
+curve = SubResource("Curve2D_j0sy4")
+script = ExtResource("1_h2r3f")
+
+[node name="Follower" type="PathFollow2D" parent="."]
+rotates = false

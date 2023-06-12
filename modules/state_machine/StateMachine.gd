@@ -13,10 +13,10 @@ func change_state(new_state: State):
 		current_state.on_exit()
 	
 	current_state = new_state
-	current_state.on_enter()
 	
 	if current_state.animation_name != "":
 		entity.play_animation(current_state.animation_name)
+	current_state.on_enter()
 		
 func on_process(delta):
 	if current_state:

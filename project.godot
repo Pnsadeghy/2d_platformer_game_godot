@@ -15,6 +15,10 @@ run/main_scene="res://scenes/levels/level_0001.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CameraHelper="*res://global/scripts/CameraHelper.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -50,6 +54,7 @@ right={
 2d_physics/layer_1="wall"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="damage"
 
 [rendering]
 

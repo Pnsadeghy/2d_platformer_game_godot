@@ -1,9 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=49 format=3 uid="uid://dg6trrqv2l2wg"]
+[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://dg6trrqv2l2wg"]
 
 [ext_resource type="Texture2D" uid="uid://bssdadaxfque8" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Double Jump (32x32).png" id="1_he2l4"]
 [ext_resource type="Texture2D" uid="uid://qphkc4v4idm0" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Fall (32x32).png" id="1_wnefa"]
 [ext_resource type="Texture2D" uid="uid://qq1g3h70ona0" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Hit (32x32).png" id="2_85bek"]
 [ext_resource type="Texture2D" uid="uid://dj35tnd2fld61" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Idle (32x32).png" id="2_knupc"]
+[ext_resource type="Texture2D" uid="uid://b8lfehm0hmep8" path="res://assets/Pixel Adventure Sprites/Main Characters/Desappearing (96x96).png" id="2_l4c0p"]
 [ext_resource type="Texture2D" uid="uid://d0b41n0kkrd2j" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Jump (32x32).png" id="3_hmcok"]
 [ext_resource type="Texture2D" uid="uid://cv3ntldurn2ov" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Run (32x32).png" id="4_56hq4"]
 [ext_resource type="Texture2D" uid="uid://cr6noe32cjued" path="res://assets/Pixel Adventure Sprites/Main Characters/Virtual Guy/Wall Jump (32x32).png" id="6_vyiyd"]
@@ -31,6 +32,34 @@ region = Rect2(128, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhlmx"]
 atlas = ExtResource("1_he2l4")
 region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rneii"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl2uw"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u3pb"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu0s4"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42xsg"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl4q2"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctg5w"]
+atlas = ExtResource("2_l4c0p")
+region = Rect2(576, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytdxd"]
 atlas = ExtResource("2_85bek")
@@ -196,6 +225,32 @@ animations = [{
 "loop": false,
 "name": &"air_jump",
 "speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rneii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl2uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u3pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu0s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42xsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl4q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctg5w")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,

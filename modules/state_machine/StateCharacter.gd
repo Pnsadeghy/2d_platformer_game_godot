@@ -9,6 +9,7 @@ class_name StateCharacter
 @export var jump_gravity_scale := 1300.0
 @export var wall_gravity_scale := 10.0
 @export var air_jumps_amount := 1
+@export var max_health = 3
 
 # variables
 var state_machine: StateMachine
@@ -17,13 +18,14 @@ var facing_right := true
 
 var jump_requested := false
 var can_check_direction := true
-
+var current_health := 0
 # states
 var idle_state
 var move_state
 var air_state
 var jump_state
 var hit_state
+var dead_state
 var on_wall_state
 var wall_jump_state
 var air_jump_state
@@ -31,6 +33,7 @@ var air_jump_state
 # childs
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var wall_checker: RayCast2D = $WallChecker
+@onready var collision_shape := $CollisionShape
 
 func _init():
 	const StateManager = preload("res://modules/state_machine/StateMachine.gd")
@@ -44,6 +47,7 @@ func _init():
 	const OnWallState = preload("res://modules/state_machine/states/character/OnWallState.gd")
 	const WallJumpState = preload("res://modules/state_machine/states/character/WallJumpState.gd")
 	const AirJumpState = preload("res://modules/state_machine/states/character/AirJumpState.gd")
+	const DeadState = preload("res://modules/state_machine/states/character/DeadState.gd")
 	
 	idle_state = IdleState.new(state_machine, self)
 	move_state = MoveState.new(state_machine, self)
@@ -53,6 +57,9 @@ func _init():
 	on_wall_state = OnWallState.new(state_machine, self)
 	wall_jump_state = WallJumpState.new(state_machine, self)
 	air_jump_state = AirJumpState.new(state_machine, self)
+	dead_state = DeadState.new(state_machine, self)
+	
+	current_health = max_health
 	
 func _ready():
 	animator.animation_finished.connect(state_machine.on_animation_finished)
@@ -68,6 +75,20 @@ func _physics_process(delta):
 func play_animation(name: String):
 	animator.play(name)
 	
+func on_jump():
+	jump_requested = false
+	
+func on_hit(area):
+	hit_state.hit_position = area.global_position
+	state_machine.change_state(hit_state)
+
+func on_disabled():
+	collision_shape.disabled = true
+	
+func set_vertical_movement():
+	velocity.x = horizontal_movement * move_speed
+	check_flip()
+
 func is_facing_wall():
 	return wall_checker.is_colliding()
 	
@@ -86,10 +107,3 @@ func check_flip():
 		animator.flip_h = true
 		wall_checker.rotation = deg_to_rad(180)
 		facing_right = false
-
-func on_jump():
-	jump_requested = false
-	
-func set_vertical_movement():
-	velocity.x = horizontal_movement * move_speed
-	check_flip()
