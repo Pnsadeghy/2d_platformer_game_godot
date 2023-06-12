@@ -1,5 +1,7 @@
 extends Area2D
 
+signal on_collect
+
 @export var point := 10
 
 var is_collected = false
@@ -17,7 +19,8 @@ func on_body_entered(body):
 	monitoring = false
 	monitorable = false
 	animator.play("collect")
-	
+	on_collect.emit()
+
 func on_animation_finished():
 	queue_free()
 	

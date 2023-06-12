@@ -185,7 +185,6 @@ radius = 8.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jgfiv")
-point = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -18,6 +18,6 @@ func _process(delta):
 func on_jump():
 	super.on_jump()
 	jump_timer.stop()
-		
+
 func _on_jump_timer_timeout():
 	jump_requested = false

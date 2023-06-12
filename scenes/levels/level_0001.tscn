@@ -25,7 +25,6 @@ zoom = Vector2(2, 2)
 
 [node name="Apple" parent="Collectables" instance=ExtResource("4_bw4w0")]
 position = Vector2(0, -136)
-point = 10
 
 [node name="Bananas" parent="Collectables" instance=ExtResource("3_gw7m0")]
 position = Vector2(-64, -64)
@@ -37,56 +36,48 @@ position = Vector2(32, -104)
 position = Vector2(96, -104)
 
 [node name="Bananas5" parent="Collectables" instance=ExtResource("3_gw7m0")]
-position = Vector2(160, -104)
+position = Vector2(176, -104)
 
 [node name="Bananas2" parent="Collectables" instance=ExtResource("3_gw7m0")]
-position = Vector2(-128, -64)
+position = Vector2(-152, -64)
 
 [node name="Bananas3" parent="Collectables" instance=ExtResource("3_gw7m0")]
-position = Vector2(-192, -64)
+position = Vector2(-216, -64)
 
 [node name="Cherries" parent="Collectables" instance=ExtResource("4_1pq52")]
 position = Vector2(64, -64)
 
 [node name="Cherries2" parent="Collectables" instance=ExtResource("4_1pq52")]
-position = Vector2(128, -64)
+position = Vector2(136, -64)
 
 [node name="Cherries6" parent="Collectables" instance=ExtResource("4_1pq52")]
 position = Vector2(-32, -104)
 
 [node name="Cherries3" parent="Collectables" instance=ExtResource("4_1pq52")]
-position = Vector2(192, -64)
+position = Vector2(216, -64)
 
 [node name="Cherries4" parent="Collectables" instance=ExtResource("4_1pq52")]
-position = Vector2(-96, -104)
+position = Vector2(-104, -104)
 
 [node name="Cherries5" parent="Collectables" instance=ExtResource("4_1pq52")]
-position = Vector2(-160, -104)
+position = Vector2(-184, -104)
 
 [node name="Player" parent="." instance=ExtResource("2_838ce")]
+position = Vector2(-256, -16)
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="FailingPlatform" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(-192, -8)
-
 [node name="FailingPlatform4" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(-48, -8)
+position = Vector2(-48, -32)
 
 [node name="FailingPlatform8" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(40, -8)
+position = Vector2(64, -40)
 
-[node name="FailingPlatform5" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(112, -8)
-
-[node name="FailingPlatform6" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(184, -8)
+[node name="FailingPlatform9" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(144, -16)
 
 [node name="FailingPlatform2" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(-120, -8)
-
-[node name="FailingPlatform7" parent="Platforms" instance=ExtResource("7_44brn")]
-position = Vector2(0, -56)
+position = Vector2(-152, -24)
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource("2_js2ky")

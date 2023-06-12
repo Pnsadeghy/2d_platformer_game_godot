@@ -9,11 +9,6 @@ size = Vector2(42, 2)
 [sub_resource type="Animation" id="Animation_o1fub"]
 resource_name = "default"
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_dtmji"]
-resource_name = "trigger"
-length = 3.0
-step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,10 +16,10 @@ tracks/0/path = NodePath("AirPlatform:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0), Vector2(0, 0), Vector2(0, 720)]
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,7 +28,36 @@ tracks/1/path = NodePath("AirPlatform/AnimatedSprite2D:speed_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.4),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dtmji"]
+resource_name = "trigger"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AirPlatform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1, 0.36, 0.61, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, 6), Vector2(0, 0), Vector2(0, 0), Vector2(0, 720)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AirPlatform/AnimatedSprite2D:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36, 0.46),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -61,6 +85,7 @@ shape = SubResource("RectangleShape2D_jojrk")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="AirPlatform"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_f1wsl")
 }
