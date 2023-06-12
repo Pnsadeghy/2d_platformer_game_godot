@@ -3,6 +3,7 @@ extends AirState
 class_name HisState
 
 var hit_position := Vector2.ZERO
+var hit_damage := 0
 
 func _init(state_machine, entity):
 	super._init(state_machine, entity)
@@ -11,11 +12,11 @@ func _init(state_machine, entity):
 func on_enter():
 	super.on_enter()
 	
-	entity.current_health -= 1
+	entity.current_health -= hit_damage
 	
 	CameraHelper.camera_shake.emit()
 	
-	if entity.current_health == 0:
+	if entity.current_health <= 0:
 		state_machine.change_state(entity.dead_state)
 		return
 	

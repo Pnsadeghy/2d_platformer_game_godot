@@ -36,8 +36,8 @@ var air_jump_state
 @onready var collision_shape := $CollisionShape
 
 func _init():
-	const StateManager = preload("res://modules/state_machine/StateMachine.gd")
-	state_machine = StateManager.new(self)
+	const StateMachine = preload("res://modules/state_machine/StateMachine.gd")
+	state_machine = StateMachine.new(self)
 	
 	const IdleState = preload("res://modules/state_machine/states/character/IdleState.gd")
 	const MoveState = preload("res://modules/state_machine/states/character/MoveState.gd")
@@ -79,6 +79,7 @@ func on_jump():
 	jump_requested = false
 	
 func on_hit(area):
+	hit_state.hit_damage = area.damage
 	hit_state.hit_position = area.global_position
 	state_machine.change_state(hit_state)
 

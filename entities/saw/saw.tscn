@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmecofmvtgwfd"]
+[gd_scene load_steps=13 format=3 uid="uid://cmecofmvtgwfd"]
 
 [ext_resource type="Texture2D" uid="uid://dhv1gsf87x4bo" path="res://assets/Pixel Adventure Sprites/Traps/Saw/On (38x38).png" id="1_56q5c"]
+[ext_resource type="Script" path="res://modules/damage_item.gd" id="1_gmkjy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ii2o"]
 atlas = ExtResource("1_56q5c")
@@ -72,6 +73,7 @@ radius = 24.0
 [node name="Saw" type="Area2D"]
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("1_gmkjy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
