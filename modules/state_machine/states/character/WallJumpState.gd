@@ -2,8 +2,16 @@ extends AirState
 
 class_name WallJumpState
 
-var timer
-var can_change_state := true
+enum Status {
+	Check,
+	Jump
+}
+
+var timer: Timer
+var status: Status
+
+const CHECK_TIMEOUT = 0.1
+const JUMP_TIMEOUT = 0.5
 
 func _init(state_machine, entity):
 	super._init(state_machine, entity)
@@ -11,31 +19,41 @@ func _init(state_machine, entity):
 	timer = Timer.new()
 	timer.name = "WallJumpTimer"
 	timer.one_shot = true
-	timer.wait_time = 0.4
 	entity.add_child(timer)
 	timer.timeout.connect(on_timeout)
+	animation_name = "on_wall"
 
 func on_enter():
+	status = Status.Check
+	timer.wait_time = CHECK_TIMEOUT
+	timer.start()
+
+func on_physics_process(delta):
+	super.on_physics_process(delta)
+	
+	if status == Status.Check:
+		if entity.jump_requested and entity.is_input_requested_other_direction():
+			on_jump()
+		else:
+			entity.velocity.y = 0
+
+func on_timeout():
+	if status == Status.Jump:
+		entity.air_state.gravity_force = 2
+	entity.set_vertical_movement()
+	state_machine.change_state(entity.air_state)
+
+func on_exit():
+	timer.stop()
+
+func on_jump():
+	status = Status.Jump
 	entity.velocity.x = entity.move_speed
 	if entity.facing_right:
 		entity.velocity.x *= -1
+	entity.check_flip()
 	entity.velocity.y = -entity.jump_force
 	entity.on_jump()
+	timer.wait_time = JUMP_TIMEOUT
 	timer.start()
-	can_change_state = false
-
-func on_process(delta):
-	if !super.on_process(delta): return false
-	
-	if can_change_state:
-		entity.air_state.gravity_force = 2
-		state_machine.change_state(entity.air_state)
-		return false
-	
-	return true
-
-func on_timeout():
-	can_change_state = true
-	
-func on_exit():
-	timer.stop()
+	entity.play_animation("jump")

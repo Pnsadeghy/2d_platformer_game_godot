@@ -3,8 +3,8 @@ extends CharacterBody2D
 class_name StateCharacter
 
 # properties
-@export var move_speed := 200.0
-@export var jump_force := 300.0
+@export var move_speed := 175.0
+@export var jump_force := 250.0
 @export var fall_gravity_scale := 980.0
 @export var jump_gravity_scale := 600.0
 @export var wall_gravity_scale := 50.0
@@ -57,9 +57,6 @@ func _ready():
 func _process(delta):
 	state_machine.on_process(delta)
 	
-	if can_check_direction:
-		check_flip()
-	
 func _physics_process(delta):
 	state_machine.on_physics_process(delta)
 	move_and_slide()
@@ -70,8 +67,10 @@ func play_animation(name: String):
 func is_facing_wall():
 	return wall_checker.is_colliding()
 	
-func wall_distance():
-	return global_position.distance_to(wall_checker.get_collision_point())
+func is_input_requested_other_direction():
+	if horizontal_movement == 0: return false
+	if horizontal_movement > 0: return !facing_right
+	return facing_right
 
 func check_flip():
 	if velocity.x == 0: return
@@ -89,3 +88,4 @@ func on_jump():
 	
 func set_vertical_movement():
 	velocity.x = horizontal_movement * move_speed
+	check_flip()

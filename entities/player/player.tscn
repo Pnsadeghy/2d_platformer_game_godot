@@ -26,7 +26,7 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_yextm")
 
 [node name="JumpTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

@@ -2,26 +2,22 @@ extends AirState
 
 class_name OnWallState
 
-var animation_set := false
-
-func on_enter():
-	super.on_enter()
-	animation_set = false
+func _init(state_machine, entity):
+	super._init(state_machine, entity)
+	animation_name = "on_wall"
 
 func on_process(delta):
 	if !super.on_process(delta): return
-	
-	if !entity.is_facing_wall():
-		state_machine.change_state(entity.air_state)
-		return false
-		
-	if entity.jump_requested:
+
+	if entity.jump_requested or entity.is_input_requested_other_direction():
 		state_machine.change_state(entity.wall_jump_state)
 		return false
-		
-	if !animation_set and entity.wall_distance() <= 10:
-		animation_set = true
-		entity.play_animation("on_wall")
+	
+	if !entity.is_facing_wall() or entity.horizontal_movement == 0:
+		state_machine.change_state(entity.air_state)
+		return false
+
+	return true
 
 func on_physics_process(delta):
 	super.on_physics_process(delta)
