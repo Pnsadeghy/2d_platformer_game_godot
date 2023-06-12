@@ -3,8 +3,8 @@ extends CharacterBody2D
 class_name StateCharacter
 
 # properties
-@export var move_speed := 175.0
-@export var jump_force := 250.0
+@export var move_speed := 200.0
+@export var jump_force := 300.0
 @export var fall_gravity_scale := 980.0
 @export var jump_gravity_scale := 600.0
 @export var wall_gravity_scale := 50.0

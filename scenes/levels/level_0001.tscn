@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8l3h8cn8cl4q"]
+[gd_scene load_steps=8 format=3 uid="uid://8l3h8cn8cl4q"]
 
 [ext_resource type="PackedScene" uid="uid://de1f1ywapry4y" path="res://entities/player/player.tscn" id="2_838ce"]
 [ext_resource type="TileSet" uid="uid://bldk6uvbsnr1x" path="res://assets/Tiles/world_tiles.tres" id="2_js2ky"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ba6658ds6ukfg" path="res://assets/Pixel Adventure Sprites/Background/Brown.png" id="3_mqwkk"]
 [ext_resource type="PackedScene" uid="uid://dwqynn2tbw87x" path="res://entities/collectable/Cherries.tscn" id="4_1pq52"]
 [ext_resource type="PackedScene" uid="uid://ypheylvgj07u" path="res://entities/collectable/Apple.tscn" id="4_bw4w0"]
+[ext_resource type="PackedScene" uid="uid://cryusl4j24lx1" path="res://entities/platform/failing_platform/failing_platform.tscn" id="7_44brn"]
 
 [node name="level_0001" type="Node2D"]
 
@@ -23,16 +24,69 @@ zoom = Vector2(2, 2)
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Apple" parent="Collectables" instance=ExtResource("4_bw4w0")]
-position = Vector2(0, -120)
+position = Vector2(0, -136)
 point = 10
 
 [node name="Bananas" parent="Collectables" instance=ExtResource("3_gw7m0")]
-position = Vector2(-64, -72)
+position = Vector2(-64, -64)
+
+[node name="Bananas6" parent="Collectables" instance=ExtResource("3_gw7m0")]
+position = Vector2(32, -104)
+
+[node name="Bananas4" parent="Collectables" instance=ExtResource("3_gw7m0")]
+position = Vector2(96, -104)
+
+[node name="Bananas5" parent="Collectables" instance=ExtResource("3_gw7m0")]
+position = Vector2(160, -104)
+
+[node name="Bananas2" parent="Collectables" instance=ExtResource("3_gw7m0")]
+position = Vector2(-128, -64)
+
+[node name="Bananas3" parent="Collectables" instance=ExtResource("3_gw7m0")]
+position = Vector2(-192, -64)
 
 [node name="Cherries" parent="Collectables" instance=ExtResource("4_1pq52")]
-position = Vector2(64, -72)
+position = Vector2(64, -64)
+
+[node name="Cherries2" parent="Collectables" instance=ExtResource("4_1pq52")]
+position = Vector2(128, -64)
+
+[node name="Cherries6" parent="Collectables" instance=ExtResource("4_1pq52")]
+position = Vector2(-32, -104)
+
+[node name="Cherries3" parent="Collectables" instance=ExtResource("4_1pq52")]
+position = Vector2(192, -64)
+
+[node name="Cherries4" parent="Collectables" instance=ExtResource("4_1pq52")]
+position = Vector2(-96, -104)
+
+[node name="Cherries5" parent="Collectables" instance=ExtResource("4_1pq52")]
+position = Vector2(-160, -104)
 
 [node name="Player" parent="." instance=ExtResource("2_838ce")]
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="FailingPlatform" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(-192, -8)
+
+[node name="FailingPlatform4" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(-48, -8)
+
+[node name="FailingPlatform8" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(40, -8)
+
+[node name="FailingPlatform5" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(112, -8)
+
+[node name="FailingPlatform6" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(184, -8)
+
+[node name="FailingPlatform2" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(-120, -8)
+
+[node name="FailingPlatform7" parent="Platforms" instance=ExtResource("7_44brn")]
+position = Vector2(0, -56)
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource("2_js2ky")

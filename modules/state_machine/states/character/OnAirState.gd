@@ -53,7 +53,7 @@ func on_physics_process(delta):
 	if entity.horizontal_movement != 0:
 		entity.set_vertical_movement()
 	else:
-		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.05)
+		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.1)
 		
 func on_jump_timeout():
 	can_jump = false
