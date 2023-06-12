@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://l04ir058br7a"]
+[gd_scene load_steps=15 format=3 uid="uid://l04ir058br7a"]
 
 [ext_resource type="Texture2D" uid="uid://cunly1jfq410e" path="res://assets/Pixel Adventure Sprites/Background/Pink.png" id="1_cr57f"]
 [ext_resource type="PackedScene" uid="uid://ypheylvgj07u" path="res://entities/collectable/Apple.tscn" id="3_xe7mf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://btkeorhu5wtne" path="res://entities/collectable/Kiwi.tscn" id="6_iv16q"]
 [ext_resource type="PackedScene" uid="uid://ddfoxs4wity4m" path="res://entities/camera/camera.tscn" id="7_kqw5r"]
 [ext_resource type="TileSet" uid="uid://bldk6uvbsnr1x" path="res://assets/Tiles/world_tiles.tres" id="7_oywy6"]
+[ext_resource type="Texture2D" uid="uid://dofxho6h2w4j1" path="res://assets/Pixel Adventure Sprites/Traps/Saw/Chain.png" id="10_2xkr1"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng64d"]
 _data = {
@@ -35,6 +36,75 @@ offset_right = 320.0
 offset_bottom = 184.0
 texture = ExtResource("1_cr57f")
 stretch_mode = 1
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Saws" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Saws"]
+texture_filter = 1
+offset_left = 140.0
+offset_top = -160.0
+offset_right = 148.0
+offset_bottom = -48.0
+texture = ExtResource("10_2xkr1")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Saws"]
+texture_filter = 1
+offset_left = 192.0
+offset_top = -12.0
+offset_right = 304.0
+offset_bottom = -4.0
+texture = ExtResource("10_2xkr1")
+stretch_mode = 1
+
+[node name="PathMover" parent="Saws" instance=ExtResource("4_c05ch")]
+curve = SubResource("Curve2D_ng64d")
+metadata/_edit_group_ = true
+
+[node name="Follower" parent="Saws/PathMover" index="0"]
+position = Vector2(0, -48)
+rotation = 3.14159
+
+[node name="Saw" parent="Saws/PathMover/Follower" index="0" instance=ExtResource("4_fm4w4")]
+
+[node name="PathMover2" parent="Saws" instance=ExtResource("4_c05ch")]
+curve = SubResource("Curve2D_f6ov6")
+metadata/_edit_group_ = true
+
+[node name="Follower" parent="Saws/PathMover2" index="0"]
+position = Vector2(-144, 32)
+rotation = 3.14159
+
+[node name="Saw" parent="Saws/PathMover2/Follower" index="0" instance=ExtResource("4_fm4w4")]
+
+[node name="PointMover" parent="Saws" node_paths=PackedStringArray("follower") instance=ExtResource("5_jyc6t")]
+position = Vector2(144, -48)
+speed = 40
+point_delay = 1.0
+start_delay = 1.0
+follower = NodePath("Saw")
+
+[node name="Saw" parent="Saws/PointMover" instance=ExtResource("4_fm4w4")]
+
+[node name="Point1" type="Marker2D" parent="Saws/PointMover"]
+
+[node name="Point2" type="Marker2D" parent="Saws/PointMover"]
+position = Vector2(0, -112)
+
+[node name="PointMover2" parent="Saws" node_paths=PackedStringArray("follower") instance=ExtResource("5_jyc6t")]
+position = Vector2(304, -8)
+speed = 40
+point_delay = 1.0
+follower = NodePath("Saw")
+
+[node name="Saw" parent="Saws/PointMover2" instance=ExtResource("4_fm4w4")]
+
+[node name="Point1" type="Marker2D" parent="Saws/PointMover2"]
+
+[node name="Point2" type="Marker2D" parent="Saws/PointMover2"]
+position = Vector2(-112, 0)
 
 [node name="Collectables" type="Node2D" parent="."]
 
@@ -85,57 +155,6 @@ position = Vector2(80, 32)
 
 [node name="Kiwi3" parent="Collectables" instance=ExtResource("6_iv16q")]
 position = Vector2(80, 72)
-
-[node name="Platforms" type="Node2D" parent="."]
-
-[node name="Saws" type="Node2D" parent="."]
-
-[node name="PathMover" parent="Saws" instance=ExtResource("4_c05ch")]
-curve = SubResource("Curve2D_ng64d")
-metadata/_edit_group_ = true
-
-[node name="Follower" parent="Saws/PathMover" index="0"]
-position = Vector2(0, -48)
-rotation = 3.14159
-
-[node name="Saw" parent="Saws/PathMover/Follower" index="0" instance=ExtResource("4_fm4w4")]
-
-[node name="PathMover2" parent="Saws" instance=ExtResource("4_c05ch")]
-curve = SubResource("Curve2D_f6ov6")
-metadata/_edit_group_ = true
-
-[node name="Follower" parent="Saws/PathMover2" index="0"]
-position = Vector2(-144, 32)
-rotation = 3.14159
-
-[node name="Saw" parent="Saws/PathMover2/Follower" index="0" instance=ExtResource("4_fm4w4")]
-
-[node name="PointMover" parent="Saws" node_paths=PackedStringArray("follower") instance=ExtResource("5_jyc6t")]
-position = Vector2(144, -48)
-speed = 40
-point_delay = 1.0
-start_delay = 1.0
-follower = NodePath("Saw")
-
-[node name="Saw" parent="Saws/PointMover" instance=ExtResource("4_fm4w4")]
-
-[node name="Point1" type="Marker2D" parent="Saws/PointMover"]
-
-[node name="Point2" type="Marker2D" parent="Saws/PointMover"]
-position = Vector2(0, -112)
-
-[node name="PointMover2" parent="Saws" node_paths=PackedStringArray("follower") instance=ExtResource("5_jyc6t")]
-position = Vector2(304, -8)
-speed = 40
-point_delay = 1.0
-follower = NodePath("Saw")
-
-[node name="Saw" parent="Saws/PointMover2" instance=ExtResource("4_fm4w4")]
-
-[node name="Point1" type="Marker2D" parent="Saws/PointMover2"]
-
-[node name="Point2" type="Marker2D" parent="Saws/PointMover2"]
-position = Vector2(-112, 0)
 
 [node name="Walls" type="TileMap" parent="."]
 texture_filter = 1
