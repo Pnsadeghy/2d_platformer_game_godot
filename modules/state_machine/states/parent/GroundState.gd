@@ -4,7 +4,7 @@ class_name GroundState
 
 func on_enter():
 	super.on_enter()
-	entity.air_state.was_on_floor = true
+	entity.air_state.reached_ground()
 
 func on_process(delta):
 	super.on_process(delta)

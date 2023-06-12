@@ -21,7 +21,6 @@ func _init(state_machine, entity):
 	timer.one_shot = true
 	entity.add_child(timer)
 	timer.timeout.connect(on_timeout)
-	animation_name = "on_wall"
 
 func on_enter():
 	status = Status.Check
@@ -34,8 +33,6 @@ func on_physics_process(delta):
 	if status == Status.Check:
 		if entity.jump_requested and entity.is_input_requested_other_direction():
 			on_jump()
-		else:
-			entity.velocity.y = 0
 
 func on_timeout():
 	if status == Status.Jump:
@@ -56,4 +53,3 @@ func on_jump():
 	entity.on_jump()
 	timer.wait_time = JUMP_TIMEOUT
 	timer.start()
-	entity.play_animation("jump")

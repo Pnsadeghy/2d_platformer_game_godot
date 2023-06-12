@@ -5,6 +5,7 @@ class_name OnAirState
 var jump_timer
 var can_jump := false
 var was_on_floor = false
+var air_jump_remains := 0
 
 func _init(state_machine, entity):
 	super._init(state_machine, entity)
@@ -32,9 +33,15 @@ func on_exit():
 func on_process(delta):
 	if !super.on_process(delta): return false
 	
-	if can_jump and entity.jump_requested:
-		state_machine.change_state(entity.jump_state)
-		return false
+	if entity.jump_requested:
+		if can_jump:
+			state_machine.change_state(entity.jump_state)
+			return false
+			
+		if air_jump_remains > 0:
+			air_jump_remains -= 1
+			state_machine.change_state(entity.air_jump_state)
+			return false
 
 	if entity.is_facing_wall():
 		if entity.jump_requested or entity.is_input_requested_other_direction():
@@ -58,3 +65,6 @@ func on_physics_process(delta):
 func on_jump_timeout():
 	can_jump = false
 
+func reached_ground():
+	was_on_floor = true
+	air_jump_remains = entity.air_jumps_amount

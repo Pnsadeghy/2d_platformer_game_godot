@@ -4,10 +4,11 @@ class_name StateCharacter
 
 # properties
 @export var move_speed := 200.0
-@export var jump_force := 400.0
+@export var jump_force := 330.0
 @export var fall_gravity_scale := 2000.0
 @export var jump_gravity_scale := 980.0
-@export var wall_gravity_scale := 50.0
+@export var wall_gravity_scale := 10.0
+@export var air_jumps_amount := 1
 
 # variables
 var state_machine: StateMachine
@@ -25,6 +26,7 @@ var jump_state
 var hit_state
 var on_wall_state
 var wall_jump_state
+var air_jump_state
 
 # childs
 @onready var animator: AnimatedSprite2D = $Animator
@@ -41,6 +43,7 @@ func _init():
 	const HitState = preload("res://modules/state_machine/states/character/HitState.gd")
 	const OnWallState = preload("res://modules/state_machine/states/character/OnWallState.gd")
 	const WallJumpState = preload("res://modules/state_machine/states/character/WallJumpState.gd")
+	const AirJumpState = preload("res://modules/state_machine/states/character/AirJumpState.gd")
 	
 	idle_state = IdleState.new(state_machine, self)
 	move_state = MoveState.new(state_machine, self)
@@ -49,6 +52,7 @@ func _init():
 	hit_state = HitState.new(state_machine, self)
 	on_wall_state = OnWallState.new(state_machine, self)
 	wall_jump_state = WallJumpState.new(state_machine, self)
+	air_jump_state = AirJumpState.new(state_machine, self)
 	
 func _ready():
 	animator.animation_finished.connect(state_machine.on_animation_finished)
