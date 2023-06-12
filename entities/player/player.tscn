@@ -19,6 +19,10 @@ script = ExtResource("1_fgh8r")
 position = Vector2(0, 4)
 target_position = Vector2(15, 0)
 
+[node name="OneWayChecker" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(0, 13)
+
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_b3lww")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b58hqbufoqh00"]
+
+[ext_resource type="Script" path="res://modules/rotator_manager.gd" id="1_x8g7i"]
+[ext_resource type="Texture2D" uid="uid://exfxcsbdg5pl" path="res://assets/Pixel Adventure Sprites/Traps/Spiked Ball/Chain.png" id="2_w85p3"]
+[ext_resource type="PackedScene" uid="uid://cwmcnfoatq5p1" path="res://entities/spike_ball/spike_ball.tscn" id="3_u5uoc"]
+
+[node name="SpikeBallRotator" type="Node2D" node_paths=PackedStringArray("rotator", "follow_point", "follower")]
+script = ExtResource("1_x8g7i")
+rotator = NodePath("Rotator")
+follow_point = NodePath("Rotator/Marker2D")
+follower = NodePath("SpikeBall")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Chain" type="TextureRect" parent="Rotator"]
+texture_filter = 1
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 40.0
+texture = ExtResource("2_w85p3")
+stretch_mode = 1
+
+[node name="Marker2D" type="Marker2D" parent="Rotator"]
+position = Vector2(0, 37)
+
+[node name="SpikeBall" parent="." instance=ExtResource("3_u5uoc")]
+position = Vector2(0, 37)

@@ -16,7 +16,7 @@ func _init(state_machine, entity):
 	jump_timer.wait_time = 0.1
 	entity.add_child(jump_timer)
 	jump_timer.timeout.connect(on_jump_timeout)
-	
+
 func on_enter():
 	super.on_enter()
 	if was_on_floor:
@@ -32,16 +32,6 @@ func on_exit():
 
 func on_process(delta):
 	if !super.on_process(delta): return false
-	
-	if entity.jump_requested:
-		if can_jump:
-			state_machine.change_state(entity.jump_state)
-			return false
-			
-		if air_jump_remains > 0:
-			air_jump_remains -= 1
-			state_machine.change_state(entity.air_jump_state)
-			return false
 
 	if entity.is_facing_wall():
 		if entity.jump_requested or entity.is_input_requested_other_direction():
@@ -50,6 +40,14 @@ func on_process(delta):
 		
 		if entity.velocity.y > 0 and entity.horizontal_movement != 0:
 			state_machine.change_state(entity.on_wall_state)
+			return false
+			
+	if entity.jump_requested:
+		if can_jump:
+			state_machine.change_state(entity.jump_state)
+			return false
+
+		if check_air_jump():
 			return false
 
 	return true
@@ -68,3 +66,9 @@ func on_jump_timeout():
 func reached_ground():
 	was_on_floor = true
 	air_jump_remains = entity.air_jumps_amount
+	
+func check_air_jump():
+	if air_jump_remains == 0: return false
+	air_jump_remains -= 1
+	state_machine.change_state(entity.air_jump_state)
+	return true

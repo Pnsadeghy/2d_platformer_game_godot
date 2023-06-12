@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcvyipp3k0oxg"]
+[gd_scene load_steps=9 format=3 uid="uid://dcvyipp3k0oxg"]
 
+[ext_resource type="Script" path="res://entities/platform/air_platform/air_platform.gd" id="1_tshcj"]
 [ext_resource type="Texture2D" uid="uid://b7b0pflfembes" path="res://assets/Pixel Adventure Sprites/Traps/Falling Platforms/On (32x10).png" id="1_yn5nv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mac3l"]
@@ -42,6 +43,7 @@ animations = [{
 size = Vector2(46, 6)
 
 [node name="AirPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_tshcj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -33,6 +33,7 @@ var air_jump_state
 # childs
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var wall_checker: RayCast2D = $WallChecker
+@onready var one_way_checker: RayCast2D = $OneWayChecker
 @onready var collision_shape := $CollisionShape
 
 func _init():
@@ -108,3 +109,15 @@ func check_flip():
 		animator.flip_h = true
 		wall_checker.rotation = deg_to_rad(180)
 		facing_right = false
+		
+func check_one_way_down():
+	return false
+
+func request_down_checker():
+	if !one_way_checker.is_colliding(): return false
+	var collider = one_way_checker.get_collider()
+	if !collider.has_method('ow_disable_collision'): return false
+	collider.ow_disable_collision()
+	return true
+	
+	

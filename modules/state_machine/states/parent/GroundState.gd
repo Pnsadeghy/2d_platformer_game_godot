@@ -9,7 +9,7 @@ func on_enter():
 func on_process(delta):
 	super.on_process(delta)
 	
-	if entity.jump_requested:
+	if !entity.check_one_way_down() and entity.jump_requested:
 		state_machine.change_state(entity.jump_state)
 		return false
 	

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwmcnfoatq5p1"]
+
+[ext_resource type="Script" path="res://modules/damage_item.gd" id="1_l2o2r"]
+[ext_resource type="Texture2D" uid="uid://28l6w7ueehyf" path="res://assets/Pixel Adventure Sprites/Traps/Spiked Ball/Spiked Ball.png" id="2_t4xg7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1fho"]
+
+[node name="SpikeBall" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_l2o2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_t4xg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u1fho")

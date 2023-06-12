@@ -37,6 +37,9 @@ func on_physics_process(delta):
 func on_timeout():
 	if status == Status.Jump:
 		entity.air_state.gravity_force = 2
+	else:
+		if entity.air_state.check_air_jump():
+			return
 	entity.set_vertical_movement()
 	state_machine.change_state(entity.air_state)
 

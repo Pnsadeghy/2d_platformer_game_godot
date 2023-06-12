@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt28geu7lrilv"]
+
+[ext_resource type="Script" path="res://entities/platform/line_platform/line_platform.gd" id="1_0lqd3"]
+[ext_resource type="Texture2D" uid="uid://dwl65tt8kp45x" path="res://assets/Pixel Adventure Sprites/Terrain/Terrain (16x16).png" id="1_x3xrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fiv3d"]
+size = Vector2(46, 4)
+
+[node name="line_platform" type="StaticBody2D"]
+script = ExtResource("1_0lqd3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_x3xrh")
+region_enabled = true
+region_rect = Rect2(272, 16, 48, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fiv3d")
+one_way_collision = true

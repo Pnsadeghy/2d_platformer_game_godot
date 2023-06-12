@@ -5,7 +5,7 @@ class_name Player
 @onready var jump_timer := $JumpTimer
 
 func _process(delta):
-	if Input.is_action_pressed("jump") and !jump_requested:
+	if Input.is_action_pressed("jump") and !jump_requested and !Input.is_action_pressed("down"):
 		Input.action_release("jump")
 		jump_requested = true
 		if !is_on_floor():
@@ -21,3 +21,7 @@ func on_jump():
 
 func _on_jump_timer_timeout():
 	jump_requested = false
+
+func check_one_way_down():
+	if !Input.is_action_pressed("down") or !Input.is_action_pressed("jump"): return false
+	return request_down_checker()
