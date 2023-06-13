@@ -5,6 +5,12 @@ class_name OnWallState
 func _init(state_machine, entity):
 	super._init(state_machine, entity)
 	animation_name = "on_wall"
+	
+func on_enter():
+	entity.set_wall_dust(true)
+	
+func on_exit():
+	entity.set_wall_dust(false)
 
 func on_process(delta):
 	if !super.on_process(delta): return

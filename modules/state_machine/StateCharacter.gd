@@ -120,4 +120,12 @@ func request_down_checker():
 	collider.ow_disable_collision()
 	return true
 	
+func on_floor_dust():
+	pass
+	
+func on_wall_dust():
+	pass
+
+func set_wall_dust(enabled: bool):
+	pass
 	

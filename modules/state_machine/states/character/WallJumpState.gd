@@ -55,4 +55,5 @@ func on_jump():
 	entity.velocity.y = -entity.jump_force
 	entity.on_jump()
 	timer.wait_time = JUMP_TIMEOUT
+	entity.on_wall_dust()
 	timer.start()

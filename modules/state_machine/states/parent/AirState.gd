@@ -4,6 +4,10 @@ class_name AirState
 
 var gravity_force := 1.0
 
+func on_enter():
+	super.on_enter()
+	entity.idle_state.was_on_floor = false
+
 func on_process(delta):
 	super.on_process(delta)
 	

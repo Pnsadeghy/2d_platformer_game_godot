@@ -5,6 +5,10 @@ class_name MoveState
 func _init(state_machine, entity):
 	super._init(state_machine, entity)
 	animation_name = "move"
+	
+func on_enter():
+	super.on_enter()
+	entity.on_floor_dust()
 
 func on_process(delta):
 	if !super.on_process(delta): return false

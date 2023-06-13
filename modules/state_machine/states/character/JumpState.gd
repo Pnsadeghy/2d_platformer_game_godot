@@ -6,6 +6,7 @@ func on_enter():
 	super.on_enter()
 	
 	entity.on_jump()
+	entity.on_floor_dust()
 	
 func on_physics_process(delta):
 	super.on_physics_process(delta)

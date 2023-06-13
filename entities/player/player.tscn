@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://de1f1ywapry4y"]
+[gd_scene load_steps=6 format=3 uid="uid://de1f1ywapry4y"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_fgh8r"]
 [ext_resource type="SpriteFrames" uid="uid://dg6trrqv2l2wg" path="res://entities/player/player_animation.tres" id="2_b3lww"]
+[ext_resource type="PackedScene" uid="uid://qh1r17agb3y" path="res://entities/dust/dust.tscn" id="3_onr1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yextm"]
 radius = 9.0
@@ -45,6 +46,13 @@ collision_mask = 8
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_tofjk")
 debug_color = Color(0, 0.67451, 0, 0.419608)
+
+[node name="FootDust" parent="." instance=ExtResource("3_onr1u")]
+position = Vector2(0, 15)
+
+[node name="WallDust" parent="." instance=ExtResource("3_onr1u")]
+position = Vector2(-11, 4)
+rotation = 0.0
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="area_entered" from="HitArea" to="." method="on_hit"]

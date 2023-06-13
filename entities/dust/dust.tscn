@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://qh1r17agb3y"]
+
+[ext_resource type="Texture2D" uid="uid://b2qq65n085k1" path="res://assets/Pixel Adventure Sprites/Other/Dust Particle.png" id="1_h73v0"]
+
+[sub_resource type="Curve" id="Curve_4gsrl"]
+_data = [Vector2(0, 1), 0.0, 1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_46sru"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Dust" type="CPUParticles2D"]
+rotation = -1.5708
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+draw_order = 1
+texture = ExtResource("1_h73v0")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 6)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_4gsrl")
+color_ramp = SubResource("Gradient_46sru")
