@@ -32,14 +32,23 @@ func on_floor_dust():
 	foot_dust.restart()
 	
 func on_wall_dust():
-	wall_dust.restart()
-
-func set_wall_dust(enabled: bool):
-	pass
-
-func check_flip():
-	super.check_flip()
 	if facing_right:
 		wall_dust.position.x = -abs(wall_dust.position.x)
 	else:
 		wall_dust.position.x = abs(wall_dust.position.x)
+	wall_dust.restart()
+	
+
+func set_wall_dust(enabled: bool):
+	if enabled:
+		if facing_right:
+			wall_dust.position.x = abs(wall_dust.position.x)
+		else:
+			wall_dust.position.x = -abs(wall_dust.position.x)
+		wall_dust.one_shot = false
+		wall_dust.explosiveness = 0
+		wall_dust.emitting = true
+	else:
+		wall_dust.emitting = false
+		wall_dust.one_shot = true
+		wall_dust.explosiveness = 1
