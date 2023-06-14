@@ -34,8 +34,10 @@ func on_floor_dust():
 func on_wall_dust():
 	if facing_right:
 		wall_dust.position.x = -abs(wall_dust.position.x)
+		wall_dust.rotation = 0
 	else:
 		wall_dust.position.x = abs(wall_dust.position.x)
+		wall_dust.rotation = deg_to_rad(180)
 	wall_dust.restart()
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8l3h8cn8cl4q"]
+[gd_scene load_steps=12 format=3 uid="uid://8l3h8cn8cl4q"]
 
 [ext_resource type="PackedScene" uid="uid://ddfoxs4wity4m" path="res://entities/camera/camera.tscn" id="2_6rt0d"]
 [ext_resource type="PackedScene" uid="uid://de1f1ywapry4y" path="res://entities/player/player.tscn" id="2_838ce"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://ypheylvgj07u" path="res://entities/collectable/Apple.tscn" id="4_bw4w0"]
 [ext_resource type="PackedScene" uid="uid://cryusl4j24lx1" path="res://entities/platform/failing_platform/failing_platform.tscn" id="7_44brn"]
 [ext_resource type="PackedScene" uid="uid://dt28geu7lrilv" path="res://entities/platform/line_platform/line_platform.tscn" id="7_m6nr8"]
+[ext_resource type="PackedScene" uid="uid://cj6bw1xfgsfe4" path="res://entities/spkies/spikes.tscn" id="10_dyis0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt4ta"]
+size = Vector2(272, 6)
 
 [node name="level_0001" type="Node2D"]
 
@@ -94,3 +98,15 @@ layer_0/tile_data = PackedInt32Array(655378, 65536, 0, 655377, 65536, 0, 655376,
 
 [node name="Player" parent="." instance=ExtResource("2_838ce")]
 position = Vector2(-256, -16)
+
+[node name="Spikes" parent="." instance=ExtResource("10_dyis0")]
+position = Vector2(-120, 136)
+
+[node name="TextureRect" parent="Spikes" index="0"]
+offset_right = 264.0
+
+[node name="CollisionShape2D" parent="Spikes" index="1"]
+position = Vector2(128, 5)
+shape = SubResource("RectangleShape2D_pt4ta")
+
+[editable path="Spikes"]

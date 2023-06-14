@@ -19,10 +19,10 @@ func on_enter():
 	if entity.current_health <= 0:
 		state_machine.change_state(entity.dead_state)
 		return
-	
-	var direction = hit_position.direction_to(entity.global_position)
+
+	var direction = hit_position.direction_to(entity.global_position).normalized()
 	direction.x *= entity.move_speed
-	direction.y *= entity.jump_force
+	direction.y *= entity.jump_force / 2
 	entity.velocity = direction
 
 func on_animation_finished():

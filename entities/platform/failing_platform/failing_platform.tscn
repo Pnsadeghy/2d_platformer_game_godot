@@ -1,10 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cryusl4j24lx1"]
+[gd_scene load_steps=10 format=3 uid="uid://cryusl4j24lx1"]
 
 [ext_resource type="Script" path="res://entities/platform/failing_platform/failing_platform.gd" id="1_kxoy8"]
 [ext_resource type="PackedScene" uid="uid://dcvyipp3k0oxg" path="res://entities/platform/air_platform/air_platform.tscn" id="1_spb3i"]
+[ext_resource type="Texture2D" uid="uid://b2qq65n085k1" path="res://assets/Pixel Adventure Sprites/Other/Dust Particle.png" id="3_r4k7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jojrk"]
 size = Vector2(42, 2)
+
+[sub_resource type="Curve" id="Curve_oyncs"]
+_data = [Vector2(0.0163934, 0.963636), 0.0, -2.32909, 0, 0, Vector2(0.846995, 0.781818), 0.0, 0.0, 0, 0, Vector2(0.980874, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7sbj5"]
+offsets = PackedFloat32Array(0, 0.0895522, 0.692537, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.427451, 1, 1, 1, 0.407843, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_o1fub"]
 resource_name = "default"
@@ -83,6 +92,17 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_jojrk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="AirPlatform"]
+
+[node name="Effect" type="CPUParticles2D" parent="AirPlatform"]
+position = Vector2(0, 5)
+texture = ExtResource("3_r4k7c")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+gravity = Vector2(0, 300)
+scale_amount_min = 0.2
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_oyncs")
+color_ramp = SubResource("Gradient_7sbj5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"

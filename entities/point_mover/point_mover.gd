@@ -10,6 +10,7 @@ enum Status {
 @export var point_delay := 0.0
 @export var start_delay := 0.0
 @export var follower: Node
+@export var loop = false
 
 var points = []
 var current_point = 0
@@ -52,11 +53,14 @@ func is_reached_active_point():
 	return points[current_point].global_position.distance_to(follower.global_position) < 1
 	
 func change_point():
-	if point_direction == 1:
-		if current_point == points.size() - 1:
-			point_direction = -1
-	elif current_point == 0:
-			point_direction = 1
+	if !loop:
+		if point_direction == 1:
+			if current_point == points.size() - 1:
+				point_direction = -1
+		elif current_point == 0:
+				point_direction = 1
+	elif current_point == points.size() - 1:
+		current_point = -1
 
 	set_point(current_point + point_direction)
 	

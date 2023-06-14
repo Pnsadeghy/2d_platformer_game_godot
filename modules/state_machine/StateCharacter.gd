@@ -19,6 +19,8 @@ var facing_right := true
 var jump_requested := false
 var can_check_direction := true
 var current_health := 0
+var vertical_force := 0
+var horizontal_force := 0
 # states
 var idle_state
 var move_state
@@ -35,6 +37,7 @@ var air_jump_state
 @onready var wall_checker: RayCast2D = $WallChecker
 @onready var one_way_checker: RayCast2D = $OneWayChecker
 @onready var collision_shape := $CollisionShape
+@onready var hit_area : Area2D = $HitArea
 
 func _init():
 	const StateMachine = preload("res://modules/state_machine/StateMachine.gd")
@@ -71,6 +74,19 @@ func _process(delta):
 	
 func _physics_process(delta):
 	state_machine.on_physics_process(delta)
+	if vertical_force > 0:
+		velocity.y = -vertical_force
+		if velocity.x != 0:
+			velocity.x /= 3
+		
+	if horizontal_force != 0:
+		if horizontal_movement == 0:
+			velocity.x = horizontal_force
+		elif (horizontal_movement > 0 and horizontal_force > 0) or (horizontal_movement < 0 and horizontal_force < 0):
+			velocity.x += horizontal_force
+		else:
+			velocity.x /= 6
+
 	move_and_slide()
 
 func play_animation(name: String):
@@ -81,7 +97,13 @@ func on_jump():
 	
 func on_hit(area):
 	hit_state.hit_damage = area.damage
-	hit_state.hit_position = area.global_position
+	if area.get("hit_direction") != null and area.hit_direction != Vector2.ZERO:
+		if velocity.length() == 0:
+			hit_state.hit_position = global_position + area.hit_direction
+		else:
+			hit_state.hit_position = global_position + velocity
+	else:
+		hit_state.hit_position = area.global_position
 	state_machine.change_state(hit_state)
 
 func on_disabled():

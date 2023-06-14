@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://l04ir058br7a"]
+[gd_scene load_steps=17 format=3 uid="uid://l04ir058br7a"]
 
 [ext_resource type="Texture2D" uid="uid://cunly1jfq410e" path="res://assets/Pixel Adventure Sprites/Background/Pink.png" id="1_cr57f"]
 [ext_resource type="PackedScene" uid="uid://dt28geu7lrilv" path="res://entities/platform/line_platform/line_platform.tscn" id="3_llsw8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ddfoxs4wity4m" path="res://entities/camera/camera.tscn" id="7_kqw5r"]
 [ext_resource type="TileSet" uid="uid://bldk6uvbsnr1x" path="res://assets/Tiles/world_tiles.tres" id="7_oywy6"]
 [ext_resource type="Texture2D" uid="uid://dofxho6h2w4j1" path="res://assets/Pixel Adventure Sprites/Traps/Saw/Chain.png" id="10_2xkr1"]
+[ext_resource type="PackedScene" uid="uid://cw2yv0aqxk63x" path="res://entities/fire/fire.tscn" id="14_ubvrj"]
 
 [sub_resource type="Curve2D" id="Curve2D_ng64d"]
 _data = {
@@ -177,6 +178,24 @@ position = Vector2(80, 32)
 
 [node name="Kiwi3" parent="Collectables" instance=ExtResource("6_iv16q")]
 position = Vector2(80, 72)
+
+[node name="Fire" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-56, 128)
+
+[node name="Fire2" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-72, 128)
+
+[node name="Fire3" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-88, 128)
+
+[node name="Fire4" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-104, 128)
+
+[node name="Fire5" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-120, 128)
+
+[node name="Fire6" parent="." instance=ExtResource("14_ubvrj")]
+position = Vector2(-136, 128)
 
 [editable path="Saws/PathMover"]
 [editable path="Saws/PathMover2"]

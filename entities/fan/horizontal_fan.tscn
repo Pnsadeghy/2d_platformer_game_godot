@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://buvpd44phfeuv"]
+
+[ext_resource type="Texture2D" uid="uid://b2qq65n085k1" path="res://assets/Pixel Adventure Sprites/Other/Dust Particle.png" id="1_dpg2e"]
+[ext_resource type="Script" path="res://entities/fan/horizontal_fan.gd" id="1_jvkku"]
+[ext_resource type="Texture2D" uid="uid://c3js4yufvsfdd" path="res://assets/Pixel Adventure Sprites/Traps/Fan/Off.png" id="2_iytos"]
+[ext_resource type="Texture2D" uid="uid://cs2luga7v1m22" path="res://assets/Pixel Adventure Sprites/Traps/Fan/On (24x8).png" id="3_mw56o"]
+
+[sub_resource type="Curve" id="Curve_1ho1y"]
+_data = [Vector2(0.0163934, 0.963636), 0.0, -2.32909, 0, 0, Vector2(0.846995, 0.781818), 0.0, 0.0, 0, 0, Vector2(0.980874, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_j45va"]
+offsets = PackedFloat32Array(0, 0.0895522, 0.692537, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.427451, 1, 1, 1, 0.407843, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o56s4"]
+atlas = ExtResource("3_mw56o")
+region = Rect2(0, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j3e3"]
+atlas = ExtResource("3_mw56o")
+region = Rect2(24, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi6ni"]
+atlas = ExtResource("3_mw56o")
+region = Rect2(48, 0, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpve4"]
+atlas = ExtResource("3_mw56o")
+region = Rect2(72, 0, 24, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbgm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iytos")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o56s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j3e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi6ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpve4")
+}],
+"loop": true,
+"name": &"on",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjvl6"]
+size = Vector2(46, 39)
+
+[node name="HorizontalFan" type="Node2D"]
+position = Vector2(-248, -121)
+rotation = 1.5708
+script = ExtResource("1_jvkku")
+
+[node name="Effect" type="CPUParticles2D" parent="."]
+position = Vector2(0, -8)
+amount = 20
+preprocess = 5.0
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("1_dpg2e")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+gravity = Vector2(400, 0)
+scale_amount_min = 0.2
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_1ho1y")
+color_ramp = SubResource("Gradient_j45va")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lbgm0")
+animation = &"on"
+autoplay = "on"
+
+[node name="ForceArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForceArea"]
+position = Vector2(1, -27.5)
+shape = SubResource("RectangleShape2D_xjvl6")
+
+[connection signal="body_entered" from="ForceArea" to="." method="_on_force_area_body_entered"]
+[connection signal="body_exited" from="ForceArea" to="." method="_on_force_area_body_exited"]

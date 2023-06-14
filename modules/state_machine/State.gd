@@ -3,16 +3,17 @@ class_name State
 var state_machine
 var entity
 var animation_name: String = ""
+var is_enabled = false
 
 func _init(machine: StateMachine, entity):
 	self.entity = entity
 	state_machine = machine
 
 func on_enter():
-	pass
+	is_enabled = true
 
 func on_exit():
-	pass
+	is_enabled = false
 	
 func on_process(delta):
 	return true

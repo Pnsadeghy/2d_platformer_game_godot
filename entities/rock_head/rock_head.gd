@@ -33,9 +33,9 @@ func _ready():
 	
 	animator.animation_finished.connect(state_machine.on_animation_finished)
 	
-	const ReadyState = preload("res://entities/rock_head/states/RockHeadReadyState.gd")
-	const MoveState = preload("res://entities/rock_head/states/RockHeadMoveState.gd")
-	const HitState = preload("res://entities/rock_head/states/RockHeadHitState.gd")
+	const ReadyState = preload("res://entities/rock_head/states/HeadReadyState.gd")
+	const MoveState = preload("res://entities/rock_head/states/HeadMoveState.gd")
+	const HitState = preload("res://entities/rock_head/states/HeadHitState.gd")
 	
 	ready_state = ReadyState.new(state_machine, self)
 	move_state = MoveState.new(state_machine, self)

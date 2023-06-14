@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj6bw1xfgsfe4"]
+
+[ext_resource type="Texture2D" uid="uid://cqhvk2jibdosr" path="res://assets/Pixel Adventure Sprites/Traps/Spikes/Idle.png" id="1_kltf6"]
+[ext_resource type="Script" path="res://modules/damage_item.gd" id="1_x8ajc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2oyw"]
+size = Vector2(13, 6)
+
+[node name="Spikes" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_x8ajc")
+hit_direction = Vector2(0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("1_kltf6")
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_s2oyw")
